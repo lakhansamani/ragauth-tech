@@ -25,8 +25,8 @@ export async function POST(req: NextRequest) {
   try {
     // Notify Lakhan
     await resend.emails.send({
-      from: "lakhan@authorizer.dev",
-      to: "lakhan@authorizer.dev",
+      from: "lakhan.samani@authorizer.dev",
+      to: "lakhan.samani@authorizer.dev",
       subject: "New RAGAuth waitlist signup",
       text: [
         "New waitlist signup for RAGAuth",
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     // Confirm to user
     await resend.emails.send({
-      from: "lakhan@authorizer.dev",
+      from: "lakhan.samani@authorizer.dev",
       to: email,
       subject: "You're on the RAGAuth waitlist",
       text: [
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         "https://blog.authorizer.dev/permission-aware-rag-authorizer-openfga-qdrant",
         "",
         "— Lakhan",
-        "lakhan@authorizer.dev",
+        "lakhan@praalaktech.com",
       ].join("\n"),
     });
 

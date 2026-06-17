@@ -151,7 +151,7 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="mailto:lakhan@authorizer.dev"
+              href="mailto:lakhan@praalaktech.com"
               className="mt-auto border border-[#0f1117] text-[#0f1117] hover:bg-[#0f1117] hover:text-white font-medium px-5 py-3 rounded text-center text-sm transition-colors"
             >
               Contact sales

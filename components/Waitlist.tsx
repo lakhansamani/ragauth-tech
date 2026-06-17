@@ -94,8 +94,8 @@ export default function Waitlist() {
             {status === "error" && (
               <p role="alert" className="text-white/90 text-sm bg-red-500/20 border border-red-400/30 rounded px-4 py-3">
                 Something went wrong —{" "}
-                <a href="mailto:lakhan@authorizer.dev" className="underline">
-                  email lakhan@authorizer.dev
+                <a href="mailto:lakhan@praalaktech.com" className="underline">
+                  email lakhan@praalaktech.com
                 </a>{" "}
                 directly.
               </p>

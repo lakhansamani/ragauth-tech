@@ -78,7 +78,7 @@ const organizationSchema = {
   name: "Praalak Tech Solutions",
   alternateName: "RAGAuth",
   url: "https://ragauth.tech",
-  email: "lakhan@authorizer.dev",
+  email: "lakhan@praalaktech.com",
   description:
     "Praalak Tech Solutions builds permission-aware AI security infrastructure. RAGAuth is their flagship product for securing RAG pipelines.",
   sameAs: [

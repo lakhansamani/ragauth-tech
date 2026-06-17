@@ -29,6 +29,6 @@ Open http://localhost:3000.
 
 ## Contact
 
-Lakhan Samani — lakhan@authorizer.dev  
+Lakhan Samani — lakhan.samani@authorizer.dev | lakhan@praalaktech.com  
 Praalak Tech Solutions — praalaktech.com  
 Powered by Authorizer — authorizer.dev

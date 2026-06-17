@@ -1,7 +1,7 @@
 // RAGAuth landing page — ragauth.tech
 // Product by Praalak Tech Solutions (praalaktech.com)
 // Powered by Authorizer (authorizer.dev)
-// Contact: lakhan@authorizer.dev
+// Contact: lakhan.samani@authorizer.dev | lakhan@praalaktech.com
 
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";

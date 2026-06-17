@@ -27,7 +27,7 @@ export default function Footer() {
               GitHub
             </a>
             <a
-              href="https://discord.gg/authorizer"
+              href="https://discord.gg/4KeqMmGc"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
