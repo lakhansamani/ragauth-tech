@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How much does RAGAuth cost?",
-    a: "The managed Pro plan is $149/month per project — not per user. There is no per-seat pricing. An early-access founding offer locks in $99/month for the first 3 months. Enterprise pricing is custom and includes dedicated infrastructure, VPC deployment, SSO, and compliance documentation.",
+    a: "The managed Pro plan is $199/month per project — not per user. There is no per-seat pricing. An early-access founding offer locks in $129/month for the first 3 customers. Enterprise pricing is custom and includes dedicated infrastructure, VPC deployment, SSO, and compliance documentation.",
   },
   {
     q: "Does RAGAuth work with any LLM?",
