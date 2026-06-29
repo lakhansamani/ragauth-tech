@@ -1,22 +1,22 @@
 const stats = [
-  "Enterprise RAG market $1.94B → $9.86B by 2030",
-  "73% of enterprises cite security as #1 AI blocker",
-  "Glean: $7.2B valuation, $300M ARR — proof this market is real",
-  "EU AI Act Article 12 requires audit trails from August 2026",
+  { value: "73%", label: "of enterprises cite security as the #1 AI blocker" },
+  { value: "Aug 2026", label: "EU AI Act Article 12 requires AI audit trails" },
+  { value: "$9.8B", label: "Enterprise RAG market by 2030" },
+  { value: "0", label: "forbidden documents reach your LLM prompt" },
 ];
 
 export default function ProofStrip() {
   return (
-    <section className="bg-[#060810] border-y border-white/10 py-6 px-4 sm:px-6">
+    <section className="bg-[#EFF6FF] border-y border-[#BFDBFE] py-8 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0">
           {stats.map((stat, i) => (
             <div
               key={i}
-              className="flex items-start gap-3 py-2 sm:py-0 border-b sm:border-b-0 sm:border-r border-white/10 last:border-0 sm:pr-4 sm:last:pr-0"
+              className="flex flex-col gap-1 lg:border-r lg:border-[#BFDBFE] lg:px-8 last:border-0 lg:first:pl-0"
             >
-              <span className="font-mono text-[#2a5bd7] text-xs mt-0.5 shrink-0">→</span>
-              <p className="text-white/60 text-sm leading-snug">{stat}</p>
+              <span className="text-2xl font-bold text-[#1D4ED8] tabular-nums">{stat.value}</span>
+              <p className="text-xs text-[#475569] leading-snug">{stat.label}</p>
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import FadeIn from "./FadeIn";
 
 const CURRENCIES = [
   { code: "USD", symbol: "$", label: "USD" },
@@ -11,7 +12,6 @@ const CURRENCIES = [
 
 type CurrencyCode = (typeof CURRENCIES)[number]["code"];
 
-// Static fallback rates (USD base)
 const FALLBACK_RATES: Record<CurrencyCode, number> = {
   USD: 1,
   INR: 84,
@@ -19,48 +19,47 @@ const FALLBACK_RATES: Record<CurrencyCode, number> = {
   GBP: 0.79,
 };
 
-const BASE_PRICES_USD = { full: 149, early: 99 };
+const BASE_PRICES_USD = { full: 199, early: 129 };
 
 function formatPrice(amount: number, code: CurrencyCode, symbol: string): string {
-  const rounded = code === "INR"
-    ? Math.round(amount / 100) * 100   // round INR to nearest 100
-    : Math.round(amount);
+  const rounded =
+    code === "INR" ? Math.round(amount / 100) * 100 : Math.round(amount);
   return `${symbol}${rounded.toLocaleString()}`;
 }
 
-const openSourceFeatures = [
-  "Full permission-aware RAG engine",
-  "OpenFGA relationship model",
-  "Permission pre-filter at retrieval layer",
-  "Docker compose — one command setup",
-  "Community support (Discord)",
-];
-
 const proFeatures = [
-  "Everything in open source",
   "Up to 3 projects",
-  "50GB document storage *",
-  "Managed Vector DB + Authorizer",
-  "Google Drive + Notion connectors *",
-  "Stale embedding sync (webhook-triggered) *",
-  "Audit log export (EU AI Act Article 12 ready)",
-  "BYO LLM (OpenAI / Ollama / local)",
+  "Managed Vector DB + permission engine",
+  "50 GB document storage",
+  "Google Drive + Notion connectors",
+  "Audit logs — EU AI Act Article 12 ready",
+  "BYO LLM — OpenAI, Ollama, or local",
   "Email support",
 ];
 
 const enterpriseFeatures = [
   "Everything in Pro",
-  "Unlimited projects + storage",
-  "VPC / on-prem deployment",
+  "Unlimited projects and storage",
+  "VPC or on-premise deployment",
   "SSO / SAML integration",
   "Custom SLA",
-  "HIPAA / GDPR audit documentation",
-  "ERP + database connectors",
-  "Dedicated Slack support",
+  "HIPAA and GDPR audit documentation",
+  "ERP and database connectors",
+  "Dedicated Slack channel",
 ];
 
 function Check() {
-  return <span className="text-[#2a5bd7] shrink-0">✓</span>;
+  return (
+    <svg
+      className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+    </svg>
+  );
 }
 
 export default function Pricing() {
@@ -77,9 +76,7 @@ export default function Pricing() {
           setLiveRates(data.live ?? false);
         }
       })
-      .catch(() => {
-        // silently use fallback
-      });
+      .catch(() => {});
   }, []);
 
   const cur = CURRENCIES.find((c) => c.code === currency)!;
@@ -88,139 +85,101 @@ export default function Pricing() {
   const earlyPrice = formatPrice(BASE_PRICES_USD.early * rate, currency, cur.symbol);
 
   return (
-    <section id="pricing" className="py-24 px-4 sm:px-6 bg-[#f7f8fa]">
+    <section id="pricing" className="py-24 px-4 sm:px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 max-w-full mb-14">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0f1117] tracking-tight mb-4">
-              Per project. Not per user. No surprises.
-            </h2>
-            <p className="text-base text-[#555] leading-relaxed">
-              Pay for the product you&apos;re securing, not for every person who uses it.
-            </p>
-          </div>
+        <FadeIn className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight mb-3">
+            Per project. Not per user.
+          </h2>
+          <p className="text-base text-[#64748B] leading-relaxed max-w-xl mx-auto mb-6">
+            Pay once for the product you&apos;re securing. Scale your users freely.
+          </p>
 
           {/* Currency switcher */}
-          <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
-            <div className="flex items-center gap-1 bg-white border border-[#e5e7eb] rounded-lg p-1">
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="flex items-center gap-1 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-1">
               {CURRENCIES.map((c) => (
                 <button
                   key={c.code}
                   onClick={() => setCurrency(c.code)}
-                  className={`font-mono text-xs px-3 py-1.5 rounded transition-colors ${
+                  className={`font-mono text-xs px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
                     currency === c.code
-                      ? "bg-[#0f1117] text-white"
-                      : "text-[#888] hover:text-[#0f1117]"
+                      ? "bg-[#0F172A] text-white"
+                      : "text-[#94A3B8] hover:text-[#0F172A]"
                   }`}
                 >
                   {c.label}
                 </button>
               ))}
             </div>
-            <p className="font-mono text-[10px] text-[#bbb]">
+            <p className="font-mono text-[10px] text-[#CBD5E1]">
               {liveRates ? "● Live rates" : "○ Approximate rates"}
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {/* Open Source */}
-          <div className="bg-white border border-[#e5e7eb] rounded-lg p-8 flex flex-col gap-6">
-            <div>
-              <p className="font-mono text-xs text-[#888] uppercase tracking-wider mb-3">Open Source</p>
-              <div className="flex items-end gap-2">
-                <span className="text-4xl font-bold text-[#0f1117]">Free</span>
-              </div>
-              <p className="text-sm text-[#666] mt-2 leading-relaxed">
-                Self-host on your own infrastructure. MIT-licensed core.
-              </p>
-            </div>
-
-            <ul className="flex flex-col gap-2.5">
-              {openSourceFeatures.map((f) => (
-                <li key={f} className="flex gap-2.5 text-sm text-[#444]">
-                  <Check />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="https://github.com/authorizerdev/authorizer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto border border-[#2a5bd7] text-[#2a5bd7] hover:bg-[#2a5bd7] hover:text-white font-medium px-5 py-3 rounded text-center text-sm transition-colors"
-            >
-              View on GitHub
-            </a>
-          </div>
-
-          {/* Pro — featured */}
-          <div className="bg-[#0a0e1a] border border-[#2a5bd7] rounded-lg p-8 flex flex-col gap-6 relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="font-mono text-xs bg-[#2a5bd7] text-white px-3 py-1 rounded-full">
+        {/* Cards — side by side, equal height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-3xl mx-auto">
+          {/* Pro */}
+          <FadeIn className="bg-[#0F172A] border border-[#2563EB]/50 rounded-2xl p-7 flex flex-col gap-5 relative">
+            <div className="absolute -top-3 left-7">
+              <span className="font-mono text-[10px] bg-[#2563EB] text-white px-3 py-1 rounded-full tracking-widest uppercase">
                 Most popular
               </span>
             </div>
 
             <div>
-              <p className="font-mono text-xs text-white/50 uppercase tracking-wider mb-3">Pro</p>
-              <div className="flex items-end gap-2">
-                <span className="text-4xl font-bold text-white">{fullPrice}</span>
-                <span className="text-white/50 text-sm mb-1">/mo</span>
+              <p className="font-mono text-[10px] text-white/40 uppercase tracking-widest mb-3">Pro</p>
+              <div className="flex items-end gap-1.5">
+                <span className="text-[2.5rem] font-bold text-white leading-none tabular-nums">{fullPrice}</span>
+                <span className="text-white/40 text-sm mb-1">/mo</span>
               </div>
-              <p className="font-mono text-xs text-[#2a5bd7] mt-1">Per project. Not per user.</p>
-              <p className="text-sm text-white/60 mt-2 leading-relaxed">
-                Managed hosting, connectors, and compliance tools. We run it. You own the data.
+              <p className="font-mono text-xs text-[#60A5FA] mt-1.5">Per project · not per user</p>
+              <p className="text-sm text-white/50 mt-2 leading-relaxed">
+                Managed hosting. We run it. You own the data.
               </p>
             </div>
 
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-2">
               {proFeatures.map((f) => (
-                <li key={f} className="flex gap-2.5 text-sm text-white/80">
+                <li key={f} className="flex gap-2 text-[13px] text-white/65 items-start">
                   <Check />
                   {f}
                 </li>
               ))}
             </ul>
 
-            <p className="font-mono text-xs text-white/30 leading-relaxed">
-              * Connectors and sync available Q3 2026. Storage overage $5/GB.
-            </p>
-
-            {/* Founding offer */}
-            <div className="border border-[#2a5bd7]/40 bg-[#2a5bd7]/10 rounded px-4 py-3">
-              <p className="text-sm text-[#7aa3f5] leading-snug">
+            <div className="border border-[#2563EB]/25 bg-[#2563EB]/10 rounded-lg px-4 py-3">
+              <p className="text-[13px] text-white/65 leading-snug">
                 <span className="font-semibold text-white">Early access:</span>{" "}
-                lock in {earlyPrice}/mo for first 3 months →
+                first 3 customers lock in {earlyPrice}/mo
               </p>
             </div>
 
             <a
-              href="#waitlist"
-              className="mt-auto bg-[#2a5bd7] hover:bg-[#1a40a8] text-white font-semibold px-5 py-3 rounded text-center text-sm transition-colors"
+              href="mailto:lakhan@praalaktech.com?subject=RAGAuth Demo Request"
+              className="mt-auto bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold px-5 py-3 rounded-xl text-center text-sm transition-colors"
             >
-              Join waitlist
+              Book a demo
             </a>
-          </div>
+          </FadeIn>
 
           {/* Enterprise */}
-          <div className="bg-white border border-[#e5e7eb] rounded-lg p-8 flex flex-col gap-6">
+          <FadeIn delay={100} className="bg-white border border-[#E2E8F0] rounded-2xl p-7 flex flex-col gap-5">
             <div>
-              <p className="font-mono text-xs text-[#888] uppercase tracking-wider mb-3">Enterprise</p>
-              <div className="flex items-end gap-2">
-                <span className="text-4xl font-bold text-[#0f1117]">Custom</span>
+              <p className="font-mono text-[10px] text-[#94A3B8] uppercase tracking-widest mb-3">Enterprise</p>
+              <div className="flex items-end gap-1.5">
+                <span className="text-[2.5rem] font-bold text-[#0F172A] leading-none">Custom</span>
               </div>
-              <p className="text-sm text-[#666] mt-2 leading-relaxed">
-                Dedicated infrastructure, compliance documentation, SLA.
+              <p className="text-sm text-[#64748B] mt-2 leading-relaxed">
+                VPC or on-prem deployment with dedicated support and compliance documentation.
               </p>
             </div>
 
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-2">
               {enterpriseFeatures.map((f) => (
-                <li key={f} className="flex gap-2.5 text-sm text-[#444]">
+                <li key={f} className="flex gap-2 text-[13px] text-[#475569] items-start">
                   <Check />
                   {f}
                 </li>
@@ -228,15 +187,15 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="mailto:lakhan@praalaktech.com"
-              className="mt-auto border border-[#0f1117] text-[#0f1117] hover:bg-[#0f1117] hover:text-white font-medium px-5 py-3 rounded text-center text-sm transition-colors"
+              href="mailto:lakhan@praalaktech.com?subject=RAGAuth Enterprise Enquiry"
+              className="mt-auto border border-[#0F172A] text-[#0F172A] hover:bg-[#0F172A] hover:text-white font-semibold px-5 py-3 rounded-xl text-center text-sm transition-colors"
             >
               Contact sales
             </a>
-          </div>
+          </FadeIn>
         </div>
 
-        <p className="font-mono text-xs text-[#aaa] mt-6 text-center">
+        <p className="font-mono text-xs text-[#CBD5E1] mt-8 text-center">
           {currency !== "USD"
             ? `Shown in ${currency} for reference — invoices issued in USD.`
             : "Prices in USD. Switch currency above for local estimates."}

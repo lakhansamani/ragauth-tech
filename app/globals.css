@@ -3,9 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #0f1117;
-  --accent: #2a5bd7;
-  --accent-dark: #1a40a8;
-  --mono: "Geist Mono", "Fira Code", "Courier New", monospace;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
 }
 
 @theme inline {
@@ -22,11 +21,35 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-mono {
   font-family: var(--font-geist-mono), "Fira Code", monospace;
+}
+
+/* Scroll-triggered fade-in */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

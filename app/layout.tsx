@@ -14,28 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RAGAuth — Permission-Aware RAG Security | Stop AI Data Leaks",
+  title: "RAGAuth — Stop AI Data Leaks in Multi-Tenant Apps",
   description:
-    "RAGAuth enforces user permissions before vector retrieval — not after. Built on OpenFGA + Authorizer. Self-hostable, open source core. No per-user pricing.",
+    "RAGAuth enforces document-level permissions before vector retrieval. Your AI never sees what users aren't allowed to read. Works with OpenAI, LangChain, Pinecone, Weaviate, pgvector.",
   metadataBase: new URL("https://ragauth.tech"),
   alternates: {
     canonical: "https://ragauth.tech",
   },
   keywords: [
     "RAG security",
-    "permission-aware RAG",
     "AI data leak prevention",
-    "vector database security",
-    "OpenFGA",
     "multi-tenant RAG",
-    "retrieval augmented generation security",
+    "permission-aware RAG",
+    "vector database access control",
+    "OpenFGA",
     "RAGAuth",
-    "Authorizer",
     "HIPAA RAG",
     "secure AI",
     "pre-filter RAG",
     "RAG access control",
     "AI permission control",
+    "LangChain security",
+    "OpenAI file search permissions",
   ],
   authors: [{ name: "Lakhan Samani", url: "https://praalaktech.com" }],
   creator: "Praalak Tech Solutions",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "RAGAuth — Your AI feature can leak one customer's data to another",
     description:
-      "Stop AI data leaks at the retrieval layer. Permission-aware RAG built on Authorizer + OpenFGA.",
+      "Stop AI data leaks at the retrieval layer. Document-level permissions for multi-tenant AI apps.",
     url: "https://ragauth.tech",
     siteName: "RAGAuth",
     type: "website",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RAGAuth — Permission-Aware RAG Security",
+    title: "RAGAuth — Stop AI Data Leaks",
     description:
-      "Stop AI data leaks at the retrieval layer. Permission-aware RAG built on Authorizer + OpenFGA.",
+      "Document-level permissions for multi-tenant AI apps. Works with OpenAI, LangChain, Pinecone.",
     creator: "@lakhansamani",
   },
   robots: {
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "theme-color": "#0a0e1a",
+    "theme-color": "#EFF6FF",
   },
 };
 
@@ -81,11 +81,7 @@ const organizationSchema = {
   email: "lakhan@praalaktech.com",
   description:
     "Praalak Tech Solutions builds permission-aware AI security infrastructure. RAGAuth is their flagship product for securing RAG pipelines.",
-  sameAs: [
-    "https://github.com/authorizerdev/authorizer",
-    "https://authorizer.dev",
-    "https://praalaktech.com",
-  ],
+  sameAs: ["https://praalaktech.com"],
 };
 
 const websiteSchema = {
@@ -94,7 +90,7 @@ const websiteSchema = {
   name: "RAGAuth",
   url: "https://ragauth.tech",
   description:
-    "Permission-aware RAG security. Enforces user permissions before vector retrieval — not after.",
+    "Document-level permissions for multi-tenant AI apps. Enforces user permissions before vector retrieval.",
   publisher: {
     "@type": "Organization",
     name: "Praalak Tech Solutions",
@@ -105,31 +101,25 @@ const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "RAGAuth",
-  alternateName: "RAGAuth by Authorizer",
   description:
-    "RAGAuth is a permission-aware RAG security layer that enforces user permissions before vector retrieval using OpenFGA relationship-based access control. Forbidden documents are never retrieved, never scored, and never in the LLM prompt. Open source core, self-hostable, MIT licensed.",
+    "RAGAuth is a permission-aware RAG security layer that enforces document-level access control before vector retrieval. Forbidden documents are never retrieved, never scored, and never in the LLM prompt.",
   applicationCategory: "SecurityApplication",
   applicationSubCategory: "AI Security / RAG Security",
   operatingSystem: "Linux, Docker, Cloud",
   url: "https://ragauth.tech",
-  downloadUrl: "https://github.com/authorizerdev/authorizer",
-  license: "https://opensource.org/licenses/MIT",
-  isAccessibleForFree: true,
   offers: [
     {
       "@type": "Offer",
-      name: "Open Source",
-      price: "0",
+      name: "Pro",
+      price: "199",
       priceCurrency: "USD",
-      description: "Self-hosted, MIT-licensed. Full permission-aware RAG engine.",
+      description:
+        "Managed hosting. Up to 3 projects. Per project, not per user.",
     },
     {
       "@type": "Offer",
-      name: "Pro",
-      price: "149",
-      priceCurrency: "USD",
-      description:
-        "Managed hosting. Up to 3 projects. Managed Vector DB + Authorizer. Per project, not per user.",
+      name: "Enterprise",
+      description: "VPC/on-prem deployment, SSO, SLA, compliance documentation.",
     },
   ],
   creator: {
@@ -143,9 +133,9 @@ const softwareSchema = {
     "Multi-tenant isolation",
     "Instant permission revocation without re-indexing",
     "JWT-based authentication",
-    "Self-hostable with Docker Compose",
     "EU AI Act Article 12 audit logs",
     "BYO LLM support",
+    "Works with OpenAI, LangChain, Pinecone, Weaviate, pgvector",
   ],
 };
 

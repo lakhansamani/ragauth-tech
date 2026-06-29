@@ -1,88 +1,66 @@
+import Logo from "./Logo";
+
 export default function Footer() {
   return (
-    <footer className="bg-[#060810] border-t border-white/10 py-12 px-4 sm:px-6">
+    <footer className="bg-[#F8FAFC] border-t border-[#E2E8F0] py-12 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Main row */}
         <div className="flex flex-col sm:flex-row justify-between gap-10 mb-10">
           {/* Logo + tagline */}
-          <div className="flex flex-col gap-2">
-            <a href="/" className="font-mono text-white font-semibold text-lg tracking-tight">
-              <span className="text-[#2a5bd7] font-bold">RAG</span>Auth
-            </a>
-            <p className="text-white/40 text-sm leading-relaxed">
-              Permission-aware RAG.
+          <div className="flex flex-col gap-3">
+            <Logo />
+            <p className="text-[#94A3B8] text-sm leading-relaxed max-w-xs">
+              The access control layer for your AI.
               <br />
-              Authorizer + Vector DB.
+              Stop data leaks before they happen.
             </p>
           </div>
 
-          {/* Center links */}
-          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/50">
+          {/* Links */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-[#64748B]">
             <a
-              href="https://github.com/authorizerdev/authorizer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              href="mailto:lakhan@praalaktech.com?subject=RAGAuth Demo Request"
+              className="hover:text-[#0F172A] transition-colors"
             >
-              GitHub
+              Book a demo
+            </a>
+            <a href="#pricing" className="hover:text-[#0F172A] transition-colors">
+              Pricing
             </a>
             <a
               href="https://discord.gg/4KeqMmGc"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[#0F172A] transition-colors"
             >
               Discord
             </a>
             <a
-              href="https://blog.authorizer.dev"
+              href="https://praalaktech.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-[#0F172A] transition-colors"
             >
-              Blog
-            </a>
-            <a
-              href="https://authorizer.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              Authorizer
+              Praalak Tech
             </a>
           </div>
 
-          {/* Right attribution */}
-          <div className="text-sm text-white/30 flex flex-col gap-1">
-            <span>
-              Powered by{" "}
-              <a
-                href="https://authorizer.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/50 hover:text-white transition-colors"
-              >
-                Authorizer
-              </a>
-            </span>
-            <span>
-              Built by{" "}
-              <a
-                href="https://praalaktech.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/50 hover:text-white transition-colors"
-              >
-                Praalak Tech Solutions
-              </a>
-            </span>
+          {/* Contact */}
+          <div className="text-sm text-[#94A3B8] flex flex-col gap-1">
+            <a
+              href="mailto:lakhan@praalaktech.com"
+              className="text-[#64748B] hover:text-[#0F172A] transition-colors"
+            >
+              lakhan@praalaktech.com
+            </a>
+            <span>Built by Praalak Tech Solutions</span>
           </div>
         </div>
 
         {/* Bottom line */}
-        <div className="border-t border-white/10 pt-6">
-          <p className="text-white/25 text-xs font-mono">
-            © 2026 Praalak Tech Solutions. RAGAuth is open source — MIT licensed.
+        <div className="border-t border-[#E2E8F0] pt-6">
+          <p className="text-[#CBD5E1] text-xs font-mono">
+            © 2026 Praalak Tech Solutions. All rights reserved.
           </p>
         </div>
       </div>
